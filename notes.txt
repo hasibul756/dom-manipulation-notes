@@ -55,6 +55,18 @@ DOM Manipulation using JavaScript Notes:-
 
 *****   Explaination with Example:-
 
+
+
+*DOMContentLoaded:
+
+This is commonly used to ensure that your JavaScript code runs after the DOM elements are available,
+preventing issues such as trying to access elements before they exist in the DOM.
+
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM manipulation code goes here
+});
+
+
 3. Selecting elements using DOM
 
     1.  getElementById(): This method is used to select an element by its unique ID attribute.
@@ -70,7 +82,6 @@ DOM Manipulation using JavaScript Notes:-
         Note : Any id should be unique, but if two or more elements with the same id exist, getElementById() returns the first.
 
     2.  getElementByClassName() : getElementsByClassName(): This method is used to select elements by their class attribute.
-        It returns a html collection of elements because multiple elements can have the same class.
 
         eg: <div class="box">Box 1</div>
             <div class="box">Box 2</div>
@@ -82,7 +93,67 @@ DOM Manipulation using JavaScript Notes:-
                 console.log(elements);
             </script>
 
-        Note: An HTMLCollection is an array-like collection (list) of HTML elements. The elements in a collection can be accessed by index (starts at 0).
+        Note: It returns a html collection of elements because multiple elements can have the same class.
+
+    3.  getElementsByTagName(): This method is used to select elements by their tag name.
+        It returns a html collection of elements because multiple elements can have the same tag.
+
+        eg: <p>This is a paragraph.</p>
+            <p>This is another paragraph.</p>
+
+            <script>
+                // Selecting all 'p' elements
+                let elements = document.getElementsByTagName("p");
+                console.log(elements);
+            </script>
+
+        Note: It returns a html collection of elements because multiple elements can have the same tag. 
+
+    4.  getElementsByName(): This method is used to select elements by their name attribute.
+
+        eg: <input type="text" name="username" value="John">
+            <input type="text" name="username" value="Doe">
+
+            <script>
+                // Selecting elements with name 'username'
+                let elements = document.getElementsByName("username");
+                console.log(elements);
+            </script>
+        Note: However, it returns a collection of elements because the name attribute is not necessarily unique.
+
+    5. querySelector() and querySelectorAll(): These methods are used to select elements using CSS selectors.
+
+        eg: <div id="container">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+            </div>
+
+            <script>
+                // Selecting the first element with class 'item' inside #container
+                let element = document.querySelector("#container .item");
+                console.log(element);
+
+                // Selecting all elements with class 'item' inside #container
+                let elements = document.querySelectorAll("#container .item");
+                console.log(elements);
+            </script>
+
+
+
+
+
+*** HTMLCollection
+
+    Note: An HTMLCollection is an array-like collection (list) of HTML elements.
+    HTMLCollections are often returned by letious DOM (Document Object Model) methods, such as 
+    getElementsByTagName, getElementsByClassName, querySelectorAll, getElementsByName() etc.
+
+    
+    To access elements within an HTMLCollection, you can use array-like indexing or iteration.
+    1. Using Indexing:
+
+        The elements in a collection can be accessed by index (starts at 0).
         Change the size of the second element with class="child":
         For eg :
         <script>
@@ -90,29 +161,21 @@ DOM Manipulation using JavaScript Notes:-
             element.getElementsByClassName("child")[1].style.fontSize = 24px";
         </script>
 
-        Loop:
+    2. Using Iteration:
 
-    3.  getElementsByTagName(): This method is used to select elements by their tag name.
+        You can iterate through all elements in the HTMLCollection using a loop, such as a for loop or a forEach loop.
+        For eg:
 
-        eg: <p>This is a paragraph.</p>
-            <p>This is another paragraph.</p>
+        <script>
+            let elements = document.getElementsByTagName("div");
 
-            <script>
-                // Selecting all 'p' elements
-                var elements = document.getElementsByTagName("p");
-                console.log(elements);
-            </script>
+            // Using a for loop
+            for (let i = 0; i < elements.length; i++) {
+                console.log(elements[i]);
+            }
 
-    4.  getElementsByName(): getElementsByName(): This method is used to select elements by their name attribute.
-        However, it returns a collection of elements because the name attribute is not necessarily unique.
-
-        eg: <input type="text" name="username" value="John">
-            <input type="text" name="username" value="Doe">
-
-            <script>
-                // Selecting elements with name 'username'
-                var elements = document.getElementsByName("username");
-                console.log(elements);
-            </script>
-
-    5. 
+            // Using forEach loop (convert HTMLCollection to array first)
+            Array.from(elements).forEach(function(element) {
+                console.log(element);
+            });
+        </script>
