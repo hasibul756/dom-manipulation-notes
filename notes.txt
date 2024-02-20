@@ -1,2 +1,118 @@
-DOM Manipulation Notes:-
+DOM Manipulation using JavaScript Notes:-
 
+1. What is DOM
+
+2. What is nodes and types of nodes
+
+3. Selecting elements using DOM
+    1.getElementById()
+    2.getElementByClassName()
+    3.getElementByTagName()
+    4.getElementByName()
+    5. querySelector() and querySelectorAll()
+
+4. Traversing elements
+    1. Selecting parent element
+    2. Selecting child  element
+    3. Selecting sibling element
+
+5. Manipulating HTML element
+    1. createElement()
+    2. appendChild()
+    3. textContext
+    4. innerHTML
+    5. after()
+    6. append()
+    7. prepand()
+    8. insertAdjacentHTML()
+    9. replaceChild()
+    10. cloneNode()
+    11. removeChild()
+    12. insertBefore()
+
+6. Attribute methods
+    1. getAttribute()
+    2. setAttribute()
+    3. hasAttribute()
+    4. removeAttribute()
+
+7. Manipulating Element's stylesheet
+    1.style property
+    2.cssText
+    3.getComputedStyle()
+    4. className property
+    5. classList property
+
+8. JavaScript Events
+    1. What is Events
+    2. Event Bubbling & Event Capturing
+    3. Event Handler Attributes
+    4. DOM Level 0 event handlers
+    5. addEventListener()
+    6. Event Objects
+    7. Different types of Event
+
+
+*****   Explaination with Example:-
+
+3. Selecting elements using DOM
+
+    1.  getElementById(): This method is used to select an element by its unique ID attribute.
+
+        eg: <div id="myDiv">This is a div element with ID 'myDiv'.</div>
+
+            <script>
+                // Selecting the element with ID 'myDiv'
+                let element = document.getElementById("myDiv");
+                console.log(element);
+            </script>
+
+        Note : Any id should be unique, but if two or more elements with the same id exist, getElementById() returns the first.
+
+    2.  getElementByClassName() : getElementsByClassName(): This method is used to select elements by their class attribute.
+        It returns a html collection of elements because multiple elements can have the same class.
+
+        eg: <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+
+            <script>
+                // Selecting elements with class 'box'
+                let elements = document.getElementsByClassName("box");
+                console.log(elements);
+            </script>
+
+        Note: An HTMLCollection is an array-like collection (list) of HTML elements. The elements in a collection can be accessed by index (starts at 0).
+        Change the size of the second element with class="child":
+        For eg :
+        <script>
+            const element = document.getElementById("myDIV");
+            element.getElementsByClassName("child")[1].style.fontSize = 24px";
+        </script>
+
+        Loop:
+
+    3.  getElementsByTagName(): This method is used to select elements by their tag name.
+
+        eg: <p>This is a paragraph.</p>
+            <p>This is another paragraph.</p>
+
+            <script>
+                // Selecting all 'p' elements
+                var elements = document.getElementsByTagName("p");
+                console.log(elements);
+            </script>
+
+    4.  getElementsByName(): getElementsByName(): This method is used to select elements by their name attribute.
+        However, it returns a collection of elements because the name attribute is not necessarily unique.
+
+        eg: <input type="text" name="username" value="John">
+            <input type="text" name="username" value="Doe">
+
+            <script>
+                // Selecting elements with name 'username'
+                var elements = document.getElementsByName("username");
+                console.log(elements);
+            </script>
+
+    5. 
