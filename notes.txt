@@ -34,7 +34,8 @@ DOM Manipulation using JavaScript Notes:-
     1. getAttribute()
     2. setAttribute()
     3. hasAttribute()
-    4. removeAttribute()
+    4. hasAttributes()
+    5. removeAttribute()
 
 7. Manipulating Element's stylesheet
     1.style property
@@ -179,3 +180,68 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(element);
             });
         </script>
+
+
+6. Attribute methods Explaination:
+
+        1. getAttribute() : returns the value of an element's attribute.
+        Eg: <div id="myElement" data-info="some data">...</div>
+            <script>
+                var element = document.getElementById("myElement");
+                var dataInfoValue = element.getAttribute("data-info");
+                console.log(dataInfoValue); // Output: "some data"
+            </script>
+
+        2. setAttribute() :  is a method used to set the value of an attribute on a DOM element.
+        It takes two parameters: the name of the attribute and the value to set.
+        If the attribute doesn't exist, it will be created; if it already exists, its value will be updated.
+        Eg: <button>Hello World</button>
+        <script>
+            const button = document.querySelector("button");
+            button.setAttribute("name", "helloButton");
+            button.setAttribute("disabled", "");
+        </script>
+
+        Note: Keep in mind that setAttribute() can be used to set any attribute on an HTML element,
+        including standard attributes like id, class, src, href, etc., as well as custom attributes.
+        However, it's worth noting that manipulating attributes directly with setAttribute() is not always the best approach,
+        especially when dealing with certain attributes like class or style,
+        where using properties like className or style might be more convenient and safer.
+
+        3. hasAttribute() : allows you to check if a specified element has a certain attribute.
+        It returns a boolean value indicating whether the element has the specified attribute or not.
+        Eg: 
+        <script>
+            var element = document.getElementById("myElement");
+
+            if (element.hasAttribute("id")) {
+            // The element has the id attribute
+            } else {
+            // The element does not have the id attribute
+            }
+        </script>
+
+        4. hasAttributes() : check whether an HTML element has any attributes or not.
+        Functionality:
+            It takes no arguments.
+            It returns a boolean value:
+                true: If the element has at least one attribute.
+                false: If the element has no attributes.
+
+        This method is useful when you need to determine if an element has any attributes attached to it, such as id, class, href, etc.
+
+        Eg:
+        <script>
+            // Get a reference to an HTML element
+            var element = document.getElementById("myElement");
+
+            // Check if the element has attributes
+            if (element.hasAttributes()) {
+                console.log("The element has attributes.");
+            } else {
+                console.log("The element does not have any attributes.");
+            }
+        </script>
+
+        5. removeAttribute() : used to remove a specified attribute from an HTML element.
+        Eg: 
