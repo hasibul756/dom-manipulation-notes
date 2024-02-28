@@ -244,4 +244,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </script>
 
         5. removeAttribute() : used to remove a specified attribute from an HTML element.
-        Eg: 
+        Eg: <div id="myDiv" data-id="123">...</div>
+        <script>
+            var myDiv = document.getElementById("myDiv");
+            myDiv.removeAttribute("data-id");
+        </script>
